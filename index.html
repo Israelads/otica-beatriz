@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ótica Beatriz — Óculos completo no mesmo dia em Prazeres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+<template id="__bundler_thumbnail" data-bg-color="#F8F5F0">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1200" height="800" fill="#F8F5F0"/>
+    <!-- Lens motif -->
+    <circle cx="460" cy="400" r="160" fill="none" stroke="#111009" stroke-width="3"/>
+    <circle cx="740" cy="400" r="160" fill="none" stroke="#111009" stroke-width="3"/>
+    <path d="M 600 400 Q 560 375 520 400" fill="none" stroke="#111009" stroke-width="3"/>
+    <line x1="300" y1="400" x2="240" y2="395" stroke="#111009" stroke-width="3"/>
+    <line x1="900" y1="400" x2="960" y2="395" stroke="#111009" stroke-width="3"/>
+    <!-- Inner rings -->
+    <circle cx="460" cy="400" r="115" fill="none" stroke="#111009" stroke-width="1" opacity="0.3"/>
+    <circle cx="740" cy="400" r="115" fill="none" stroke="#111009" stroke-width="1" opacity="0.3"/>
+    <!-- Accent dot -->
+    <circle cx="620" cy="240" r="10" fill="#C05A28"/>
+    <!-- Brand text -->
+    <text x="600" y="640" text-anchor="middle" font-family="Georgia,serif" font-size="36" font-weight="400" fill="#111009" letter-spacing="4">ÓTICA BEATRIZ</text>
+    <text x="600" y="680" text-anchor="middle" font-family="monospace" font-size="14" fill="#7A7670" letter-spacing="8">PRAZERES · PE</text>
+  </svg>
+</template>
+<style>
+/* =====================================================
+   ÓTICA BEATRIZ v3 — Luxury Editorial
+   Cormorant Garamond (display) + Helvetica (body)
+   Off-white · Deep Ink · Terracotta Orange accent
+   ===================================================== */
+
+:root {
+  --bg:        #F8F5F0;
+  --bg-alt:    #F0EDE6;
+  --bg-dark:   #0F0E0C;
+  --ink:       #111009;
+  --ink-2:     #2C2A26;
+  --muted:     #7A7670;
+  --line:      #DDD9D0;
+  --accent:    oklch(0.58 0.15 42);
+  --accent-lt: oklch(0.96 0.03 42);
+  --serif:     "Cormorant Garamond", Georgia, serif;
+  --sans:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono:      "SF Mono", "Menlo", "Consolas", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* =====================
+   SCROLL REVEAL
+   ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+.d5 { transition-delay: 0.5s; }
+
+/* =====================
+   KEYFRAMES
+   ===================== */
+@keyframes breath {
+  0%,100% { transform: scale(1); opacity: var(--op, 0.18); }
+  50%      { transform: scale(1.07); opacity: calc(var(--op, 0.18) * 0.4); }
+}
+@keyframes spin-cw  { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+@keyframes orbit-dot {
+  0%   { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
+}
+@keyframes expand-fade {
+  0%   { r: 12; opacity: 0.5; }
+  100% { r: 80; opacity: 0; }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-14px) rotate(1deg); }
+  66%      { transform: translateY(-6px) rotate(-1deg); }
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes draw-line {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   NAV
+   ===================== */
+nav.top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248, 245, 240, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 11px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.22s, color 0.22s;
+}
+.nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+/* =====================
+   HERO
+   ===================== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 0 80px;
+}
+
+/* Animated circle backdrop */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-canvas svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 36px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.hero-badge .blink {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: breath 2s ease-in-out infinite;
+  --op: 1;
+}
+
+h1.display {
+  font-family: var(--serif);
+  font-size: clamp(52px, 6.5vw, 88px);
+  font-weight: 500;
+  line-height: 1.01;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  text-wrap: balance;
+}
+h1.display em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+h1.display strong {
+  font-weight: 700;
+}
+
+.hero-body {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 50ch;
+  margin-bottom: 44px;
+  text-wrap: pretty;
+}
+
+.cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 30px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s, background 0.22s, color 0.22s, box-shadow 0.22s;
+}
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.btn-wa { background: var(--accent); color: #fff; }
+.btn-wa:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.btn .arr { transition: transform 0.22s; }
+.btn:hover .arr { transform: translateX(5px); }
+
+/* Hero visual — animated lens */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1 / 1.1;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+.hero-visual svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-visual-tag {
+  position: absolute;
+  bottom: 20px; left: 20px; right: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  z-index: 2;
+}
+
+/* =====================
+   TICKER
+   ===================== */
+.ticker-wrap {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 16px 0;
+  overflow: hidden;
+  border-top: 1px solid #1a1916;
+  border-bottom: 1px solid #1a1916;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track span {
+  display: inline-block;
+  padding: 0 48px;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(248,245,240,0.7);
+}
+.ticker-track span b {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--bg);
+  margin: 0 6px;
+}
+.ticker-track .sep {
+  color: var(--accent);
+  font-style: normal;
+  padding: 0 4px;
+}
+
+/* =====================
+   TRUST BAR
+   ===================== */
+.trustbar {
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0;
+}
+.trustbar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.trust-item {
+  background: var(--bg);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.trust-item .tk { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+.trust-item .tv { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+
+/* =====================
+   SECTION BASE
+   ===================== */
+section.blk {
+  padding: 130px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.sec-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sec-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--muted);
+}
+h2.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+h2.sec-title em { font-style: italic; font-weight: 300; }
+.sec-body {
+  font-size: 18px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+/* =====================
+   OBJEÇÃO (dark)
+   ===================== */
+.objection {
+  background: var(--bg-dark);
+  color: var(--bg);
+  border-bottom: 0;
+}
+.objection h2.sec-title { color: var(--bg); }
+.objection .sec-body { color: #9A9690; }
+.objection .sec-kicker { color: #5A5650; }
+.objection .sec-kicker::before { background: #5A5650; }
+
+/* Dark section circle bg */
+.dark-circles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.dark-circles svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.split-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 56px;
+  position: relative;
+  z-index: 2;
+}
+.split-card {
+  padding: 48px 44px;
+  border-radius: 2px;
+}
+.split-card.dark-card {
+  border: 1px solid #1E1D1A;
+  background: rgba(255,255,255,0.025);
+}
+.split-card.accent-card {
+  background: var(--accent);
+  color: #fff;
+}
+.split-card h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+.split-card ul { list-style: none; }
+.split-card li {
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 17px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  line-height: 1.45;
+}
+.split-card.accent-card li { border-top-color: rgba(255,255,255,0.18); }
+.split-card li:first-child { border-top: 0; padding-top: 0; }
+.split-card li .n {
+  font-family: var(--mono);
+  font-size: 11px;
+  opacity: 0.45;
+  padding-top: 2px;
+  min-width: 22px;
+}
+
+/* =====================
+   ESPECIALIDADES
+   ===================== */
+.spec-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.spec-cell {
+  background: var(--bg);
+  padding: 44px 40px 52px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s;
+}
+.spec-cell:hover { background: var(--bg-alt); }
+.spec-visual {
+  aspect-ratio: 4/3;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+.spec-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.spec-visual .vl {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: var(--bg);
+  padding: 4px 9px;
+  border-radius: 2px;
+}
+.spec-n {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+.spec-cell h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+.spec-cell p { font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+/* =====================
+   DIFERENCIAIS
+   ===================== */
+.diff-section { background: var(--bg-alt); }
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.diff-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow 0.22s;
+}
+.diff-card:hover {
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+/* Animated circle decoration per card */
+.diff-card .card-ring {
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  --op: 0.6;
+  animation: breath 5s ease-in-out infinite;
+  pointer-events: none;
+}
+.diff-card:nth-child(2) .card-ring { animation-delay: 1.6s; }
+.diff-card:nth-child(3) .card-ring { animation-delay: 3.2s; }
+.diff-card .card-ring-inner {
+  position: absolute;
+  bottom: -30px; right: -30px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  border: 1px solid var(--bg-alt);
+  pointer-events: none;
+}
+.diff-card .dc {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.diff-card .stat {
+  font-family: var(--serif);
+  font-size: clamp(60px, 6vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+}
+.diff-card .stat-unit {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-left: 4px;
+}
+.diff-card .stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.diff-card h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+}
+.diff-card p { font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+/* =====================
+   MAPA / LOCAL
+   ===================== */
+.local-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.map-frame {
+  aspect-ratio: 4/5;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.map-frame svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-pin-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, calc(-50% + 38px));
+  background: var(--ink);
+  color: var(--bg);
+  padding: 9px 16px;
+  border-radius: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 4;
+}
+.addr-table {
+  margin: 36px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.addr-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  padding: 13px 0;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.addr-row:last-child { border-bottom: 0; }
+.addr-row .ak {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-top: 1px;
+}
+.addr-row .av { font-size: 16px; letter-spacing: -0.01em; }
+
+/* =====================
+   FECHAMENTO
+   ===================== */
+.closing {
+  background: var(--bg-dark);
+  color: var(--bg);
+  text-align: center;
+  padding: 160px 0;
+  position: relative;
+  overflow: hidden;
+}
+.closing .sec-kicker { justify-content: center; color: #4A4844; }
+.closing .sec-kicker::before { background: #4A4844; }
+.closing h2.sec-title { color: var(--bg); max-width: 20ch; margin: 0 auto 28px; }
+.closing .sec-body { color: #9A9690; margin: 0 auto 52px; text-align: center; }
+.closing .phone-tag {
+  margin-top: 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #4A4844;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+footer {
+  background: var(--bg);
+  padding: 72px 0 44px;
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.foot-col h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+.foot-col p, .foot-col a {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+.foot-col a:hover { color: var(--accent); }
+.foot-logo img { height: 32px; margin-bottom: 20px; }
+.foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* =====================
+   FAB WhatsApp
+   ===================== */
+.fab {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  background: var(--accent);
+  color: #fff;
+  padding: 15px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  letter-spacing: 0.01em;
+}
+.fab:hover { transform: translateY(-3px); }
+.fab .fab-pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  animation: breath 1.8s ease-in-out infinite;
+  --op: 1;
+}
+
+/* =====================
+   RESPONSIVE — TABLET
+   ===================== */
+@media (max-width: 1000px) {
+  .hero-inner, .local-grid { grid-template-columns: 1fr; gap: 48px; }
+  .spec-row, .diff-grid, .split-cards { grid-template-columns: 1fr; }
+  .trustbar-grid { grid-template-columns: repeat(2,1fr); }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .hero-canvas { display: none; }
+  section.blk { padding: 90px 0; }
+  .hero { padding: 72px 0 60px; min-height: auto; }
+  .hero-visual { max-height: 420px; }
+  .ticker-track span { font-size: 17px; }
+  .split-card { padding: 36px 32px; }
+  .diff-card { padding: 44px 36px; min-height: auto; }
+  .spec-cell { padding: 36px 32px 44px; }
+  h2.sec-title { font-size: clamp(32px, 5vw, 48px); }
+}
+
+/* =====================
+   RESPONSIVE — MOBILE
+   ===================== */
+@media (max-width: 600px) {
+  :root { font-size: 16px; }
+
+  .container { padding: 0 20px; }
+
+  /* Nav */
+  .nav-inner { height: 64px; }
+  .nav-links { display: none; }
+  .nav-logo img { height: 28px; }
+  .nav-cta { padding: 9px 16px; font-size: 12px; }
+
+  /* Hero */
+  .hero { padding: 52px 0 52px; min-height: auto; }
+  h1.display { font-size: 38px; line-height: 1.04; }
+  .hero-body { font-size: 16px; margin-bottom: 32px; }
+  .hero-badge { font-size: 10px; padding: 7px 12px; margin-bottom: 24px; }
+  .cta-group { flex-direction: column; align-items: stretch; }
+  .cta-group .btn { justify-content: center; padding: 16px 24px; }
+  .hero-visual { aspect-ratio: 4/3; max-height: 280px; }
+  .hero-visual-tag { font-size: 9px; bottom: 12px; left: 12px; right: 12px; }
+
+  /* Ticker */
+  .ticker-track span { font-size: 15px; padding: 0 28px; }
+
+  /* Trustbar */
+  .trustbar { padding: 0; }
+  .trustbar-grid { grid-template-columns: 1fr 1fr; }
+  .trust-item { padding: 20px 18px; }
+  .trust-item .tv { font-size: 18px; }
+
+  /* Sections */
+  section.blk { padding: 64px 0; }
+  .sec-kicker { font-size: 10px; margin-bottom: 16px; }
+  h2.sec-title { font-size: 32px; margin-bottom: 16px; }
+  .sec-body { font-size: 16px; }
+
+  /* Objection cards */
+  .split-cards { gap: 14px; margin-top: 36px; }
+  .split-card { padding: 28px 24px; }
+  .split-card li { font-size: 15px; padding: 14px 0; }
+
+  /* Especialidades */
+  .spec-row { gap: 1px; }
+  .spec-cell { padding: 28px 24px 36px; min-height: auto; }
+  .spec-visual { margin-bottom: 20px; }
+  .spec-cell h3 { font-size: 22px; }
+
+  /* Diferenciais */
+  .diff-grid { gap: 14px; }
+  .diff-card { padding: 36px 28px; min-height: auto; }
+  .diff-card .stat { font-size: 56px; }
+  .diff-card h3 { font-size: 20px; }
+
+  /* Local */
+  .local-grid { gap: 36px; }
+  .map-frame { aspect-ratio: 4/3; }
+  .addr-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; }
+  .addr-row .ak { font-size: 10px; }
+  .addr-row .av { font-size: 15px; }
+  .addr-table { margin: 24px 0; }
+
+  /* Fechamento */
+  .closing { padding: 100px 0; }
+  .closing h2.sec-title { font-size: 32px; }
+  .closing .sec-body { font-size: 16px; }
+  .closing .btn-wa { font-size: 15px !important; padding: 16px 24px !important; }
+  .closing .phone-tag { font-size: 11px; }
+
+  /* Footer */
+  .foot-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .foot-logo img { height: 28px; }
+
+  /* FAB */
+  .fab { bottom: 16px; right: 16px; padding: 13px 18px; }
+  .fab .fab-label { display: none; }
+  .fab .fab-pulse { width: 10px; height: 10px; }
+
+  /* Buttons global */
+  .btn { font-size: 15px; padding: 15px 22px; }
+
+  /* Diff card ring — hide on mobile to avoid overflow */
+  .diff-card .card-ring,
+  .diff-card .card-ring-inner { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========= NAV ========= -->
+<nav class="top">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="uploads/Prancheta 1.png" alt="Ótica Beatriz" style="width: 90px;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#diferencial">Diferenciais</a></li>
+      <li><a href="#local">Localização</a></li>
+    </ul>
+    <a href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</nav>
+
+<!-- ========= HERO ========= -->
+<header class="hero">
+  <!-- Animated circle canvas -->
+  <div class="hero-canvas" aria-hidden="true">
+    <svg viewBox="0 0 1400 860" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="hgrid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#DDD9D0" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="1400" height="860" fill="url(#hgrid)" opacity="0.5"/>
+      <!-- Large spinning orbit -->
+      <circle cx="1100" cy="430" r="380" fill="none" stroke="#DDD9D0" stroke-width="0.8" stroke-dasharray="6 12"
+        style="transform-origin:1100px 430px; animation: spin-cw 90s linear infinite;"/>
+      <circle cx="1100" cy="430" r="260" fill="none" stroke="#E8E4DC" stroke-width="0.5" stroke-dasharray="3 9"
+        style="transform-origin:1100px 430px; animation: spin-ccw 60s linear infinite;"/>
+      <circle cx="1100" cy="430" r="140" fill="none" stroke="#DDD9D0" stroke-width="0.8"
+        style="transform-origin:1100px 430px; animation: breath 7s ease-in-out infinite; --op:0.5;"/>
+      <!-- Orbiting dots -->
+      <circle r="4" fill="oklch(0.58 0.15 42)" opacity="0.6"
+        style="transform-origin:1100px 430px; --r:380px; animation: orbit-dot 20s linear infinite;"/>
+      <circle r="3" fill="#111009" opacity="0.25"
+        style="transform-origin:1100px 430px; --r:260px; animation: orbit-dot 14s linear infinite reverse;"/>
+      <circle r="2" fill="oklch(0.58 0.15 42)" opacity="0.4"
+        style="transform-origin:1100px 430px; --r:140px; animation: orbit-dot 8s linear infinite;"/>
+      <!-- Small bg circles left -->
+      <circle cx="120" cy="120" r="6" fill="none" stroke="#DDD9D0" stroke-width="1" style="animation: float 8s ease-in-out infinite;"/>
+      <circle cx="60" cy="700" r="40" fill="none" stroke="#E8E4DC" stroke-width="0.5" style="animation: breath 9s ease-in-out infinite; --op:0.4;"/>
+    </svg>
+  </div>
+
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-badge reveal">
+        <span class="blink"></span>
+        Prazeres · Jaboatão dos Guararapes
+      </div>
+      <h1 class="display reveal d1">
+        O seu óculos<br>
+        <em>completo e pronto</em><br>
+        <strong>no mesmo dia.</strong>
+      </h1>
+      <p class="hero-body reveal d2">
+        Armações exclusivas, lentes de alta tecnologia e facilidade para o seu exame oftalmológico — tudo em um só lugar.
+      </p>
+      <div class="cta-group reveal d3">
+        <a class="btn btn-ink" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener">Falar com um consultor <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#especialidades">Ver especialidades</a>
+      </div>
+    </div>
+
+    <!-- Hero animated lens visual -->
+    <div class="hero-visual reveal d2" aria-hidden="true">
+      <svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#DDD9D0" stroke-width="0.9"/>
+          </pattern>
+        </defs>
+        <rect width="440" height="480" fill="url(#hatch)"/>
+
+        <!-- Outer glow rings -->
+        <circle cx="155" cy="240" r="115" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.4">
+          <animate attributeName="r" values="115;120;115" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.15;0.4" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="285" cy="240" r="115" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.4">
+          <animate attributeName="r" values="115;120;115" dur="5s" begin="0.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.15;0.4" dur="5s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Lens outlines — main -->
+        <g fill="none" stroke="#111009" stroke-width="1.4">
+          <circle cx="155" cy="240" r="88">
+            <animate attributeName="r" values="88;90;88" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="285" cy="240" r="88">
+            <animate attributeName="r" values="88;90;88" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Bridge -->
+          <path d="M 243 240 Q 220 226 197 240" stroke-width="1.4"/>
+          <!-- Arms -->
+          <line x1="67" y1="240" x2="30" y2="236"/>
+          <line x1="373" y1="240" x2="410" y2="236"/>
+        </g>
+
+        <!-- Concentric inner rings -->
+        <g fill="none" stroke="#111009" stroke-width="0.5">
+          <circle cx="155" cy="240" r="68" opacity="0.25">
+            <animate attributeName="opacity" values="0.25;0.08;0.25" dur="3.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="155" cy="240" r="48" opacity="0.18">
+            <animate attributeName="opacity" values="0.18;0.06;0.18" dur="3.5s" begin="0.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="155" cy="240" r="28" opacity="0.12">
+            <animate attributeName="opacity" values="0.12;0.04;0.12" dur="3.5s" begin="0.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="285" cy="240" r="68" opacity="0.25">
+            <animate attributeName="opacity" values="0.25;0.08;0.25" dur="3.5s" begin="1.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="285" cy="240" r="48" opacity="0.18">
+            <animate attributeName="opacity" values="0.18;0.06;0.18" dur="3.5s" begin="1.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="285" cy="240" r="28" opacity="0.12">
+            <animate attributeName="opacity" values="0.12;0.04;0.12" dur="3.5s" begin="2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Spinning dashed ring on right lens -->
+        <circle cx="285" cy="240" r="78" fill="none" stroke="#111009" stroke-width="0.6" stroke-dasharray="5 7" opacity="0.2">
+          <animateTransform attributeName="transform" type="rotate" values="0 285 240;360 285 240" dur="30s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Orbiting dot on left lens -->
+        <circle r="3.5" fill="oklch(0.58 0.15 42)" opacity="0.9">
+          <animateMotion dur="7s" repeatCount="indefinite"
+            path="M 155,152 A 88,88 0 1,1 154.99,152 Z"/>
+        </circle>
+
+        <!-- Measurement lines -->
+        <g stroke="#7A7670" stroke-width="0.5" fill="none" opacity="0.5">
+          <line x1="67" y1="360" x2="373" y2="360"/>
+          <line x1="67" y1="356" x2="67" y2="364"/>
+          <line x1="373" y1="356" x2="373" y2="364"/>
+          <line x1="220" y1="356" x2="220" y2="364"/>
+        </g>
+        <text x="220" y="380" text-anchor="middle" font-family="SF Mono, monospace" font-size="9" fill="#7A7670" letter-spacing="1.5">PRONTO · MESMO DIA</text>
+      </svg>
+      <div class="hero-visual-tag">
+        <span>FIG. 01</span>
+        <span>LENTE · ARMAÇÃO · EXAME</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========= TICKER ========= -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Óculos completo <b>no mesmo dia</b> <span class="sep">·</span></span>
+    <span>Lentes <b>multifocais</b> e visão simples <span class="sep">·</span></span>
+    <span>Atendimento <b>oftalmológico</b> especializado <span class="sep">·</span></span>
+    <span>Armações <b>exclusivas</b> e duráveis <span class="sep">·</span></span>
+    <span>Prazeres · <b>Jaboatão dos Guararapes</b> <span class="sep">·</span></span>
+    <span>Óculos completo <b>no mesmo dia</b> <span class="sep">·</span></span>
+    <span>Lentes <b>multifocais</b> e visão simples <span class="sep">·</span></span>
+    <span>Atendimento <b>oftalmológico</b> especializado <span class="sep">·</span></span>
+    <span>Armações <b>exclusivas</b> e duráveis <span class="sep">·</span></span>
+    <span>Prazeres · <b>Jaboatão dos Guararapes</b> <span class="sep">·</span></span>
+  </div>
+</div>
+
+<!-- ========= TRUSTBAR ========= -->
+<div class="trustbar">
+  <div class="container">
+    <div class="trustbar-grid">
+      <div class="trust-item reveal"><span class="tk">Prazo</span><span class="tv">Mesmo dia</span></div>
+      <div class="trust-item reveal d1"><span class="tk">Exame</span><span class="tv">Com especialista</span></div>
+      <div class="trust-item reveal d2"><span class="tk">Lentes</span><span class="tv">Multifocal & visão simples</span></div>
+      <div class="trust-item reveal d3"><span class="tk">Endereço</span><span class="tv">Av. Barreto de Menezes, 617</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========= DOBRA 2 — OBJEÇÃO ========= -->
+<section class="blk objection" id="objecao">
+  <!-- Animated bg circles -->
+  <div class="dark-circles" aria-hidden="true">
+    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+      <circle cx="1100" cy="450" r="360" fill="none" stroke="#1C1B18" stroke-width="0.8" stroke-dasharray="8 14"
+        style="transform-origin:1100px 450px; animation: spin-cw 80s linear infinite;"/>
+      <circle cx="1100" cy="450" r="240" fill="none" stroke="#181714" stroke-width="0.5" stroke-dasharray="3 8"
+        style="transform-origin:1100px 450px; animation: spin-ccw 55s linear infinite;"/>
+      <circle cx="200" cy="150" r="90" fill="none" stroke="#181714" stroke-width="1"
+        style="animation: breath 9s ease-in-out infinite; --op:0.8; transform-origin:200px 150px;"/>
+      <!-- Orbiting dots -->
+      <circle r="3" fill="oklch(0.58 0.15 42)" opacity="0.5"
+        style="transform-origin:1100px 450px; --r:360px; animation: orbit-dot 24s linear infinite;"/>
+      <circle r="2.5" fill="#fff" opacity="0.12"
+        style="transform-origin:1100px 450px; --r:240px; animation: orbit-dot 16s linear infinite reverse;"/>
+    </svg>
+  </div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="sec-kicker reveal">02 · Problema & Solução</div>
+    <h2 class="sec-title reveal d1">Cansado de esperar semanas<br>pelo seu óculos novo?</h2>
+    <p class="sec-body reveal d2">Nós sabemos que a sua visão não pode esperar. Esqueça a burocracia e os prazos longos — na Ótica Beatriz, você resolve o exame e o óculos em um só lugar, no mesmo dia.</p>
+
+    <div class="split-cards">
+      <div class="split-card dark-card reveal d2">
+        <h3>O caminho antigo</h3>
+        <ul>
+          <li><span class="n">01</span>Semanas de espera até o óculos ficar pronto.</li>
+          <li><span class="n">02</span>Consulta em um lugar, exame em outro, óculos em um terceiro.</li>
+          <li><span class="n">03</span>Orçamento que só fecha no fim, com surpresas.</li>
+          <li><span class="n">04</span>Atendimento padrão, sem cuidar do seu estilo.</li>
+        </ul>
+      </div>
+      <div class="split-card accent-card reveal d3">
+        <h3>Ótica Beatriz</h3>
+        <ul>
+          <li><span class="n">01</span>Entrega expressa — pronto no mesmo dia.</li>
+          <li><span class="n">02</span>Exame, lente e armação em um só lugar.</li>
+          <li><span class="n">03</span>Preço justo e transparente desde o começo.</li>
+          <li><span class="n">04</span>Curadoria de armações exclusivas pro seu rosto.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:52px; position:relative; z-index:2;" class="reveal d3">
+      <a class="btn btn-wa" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener">
+        Quero agilizar meu óculos agora <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DOBRA 3 — ESPECIALIDADES ========= -->
+<section class="blk" id="especialidades">
+  <div class="container">
+    <div class="sec-kicker reveal">03 · Especialidades</div>
+    <h2 class="sec-title reveal d1">Tecnologia e precisão<br>para a sua <em>saúde visual.</em></h2>
+    <p class="sec-body reveal d2" style="margin-bottom:64px;">Trabalhamos com laboratório de ponta para garantir a adaptação perfeita, seja para leitura ou para o dia a dia.</p>
+
+    <div class="spec-row">
+      <div class="spec-cell reveal">
+        <div class="spec-visual" style="background:#e8dfd0;">
+          <img src="uploads/Design sem nome (32).png" alt="Óculos completo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
+        </div>
+        <span class="spec-n">01 / 03</span>
+        <h3>Óculos completo</h3>
+        <p>Pacotes com lente e armação que cabem no seu bolso, focados no melhor custo-benefício.</p>
+      </div>
+
+      <div class="spec-cell reveal d1">
+        <div class="spec-visual">
+          <img src="uploads/lentes-multifocais.png" alt="Lentes multifocais" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
+          <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" style="display:none;">
+            <defs>
+              <pattern id="sv2" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="7" stroke="#DDD9D0" stroke-width="0.8"/>
+              </pattern>
+            </defs>
+            <rect width="300" height="225" fill="url(#sv2)"/>
+            <g fill="none" stroke="#111009">
+              <circle cx="150" cy="112" r="75" stroke-width="1.2">
+                <animate attributeName="r" values="75;70;75" dur="6s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="150" cy="112" r="54" stroke-width="0.7" opacity="0.5">
+                <animate attributeName="r" values="54;50;54" dur="6s" begin="0.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="150" cy="112" r="33" stroke-width="0.5" opacity="0.3">
+                <animate attributeName="r" values="33;30;33" dur="6s" begin="1s" repeatCount="indefinite"/>
+              </circle>
+              <line x1="30" y1="72" x2="270" y2="72" stroke-width="0.4"/>
+              <line x1="30" y1="112" x2="270" y2="112" stroke-width="0.4"/>
+              <line x1="30" y1="152" x2="270" y2="152" stroke-width="0.4"/>
+            </g>
+            <g font-family="SF Mono,monospace" font-size="7" fill="#7A7670">
+              <text x="36" y="68">longe</text>
+              <text x="36" y="108">inter</text>
+              <text x="36" y="148">perto</text>
+            </g>
+          </svg>
+          <span class="vl">lente multifocal</span>
+        </div>
+        <span class="spec-n">02 / 03</span>
+        <h3>Lentes multifocais</h3>
+        <p>Transição suave e foco perfeito em todas as distâncias, com garantia de adaptação.</p>
+      </div>
+
+      <div class="spec-cell reveal d2">
+        <div class="spec-visual">
+          <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="sv3" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="7" stroke="#DDD9D0" stroke-width="0.8"/>
+              </pattern>
+            </defs>
+            <rect width="300" height="225" fill="url(#sv3)"/>
+            <g font-family="Georgia,serif" fill="#111009" text-anchor="middle">
+              <text x="150" y="55"  font-size="30" font-weight="700">E</text>
+              <text x="150" y="88"  font-size="20">F P</text>
+              <text x="150" y="114" font-size="15">T O Z</text>
+              <text x="150" y="135" font-size="12">L P E D</text>
+              <text x="150" y="153" font-size="10">P E C F D</text>
+              <text x="150" y="168" font-size="8">E D F C Z P</text>
+            </g>
+            <circle cx="150" cy="112" r="66" fill="none" stroke="#111009" stroke-width="0.6" stroke-dasharray="5 6" opacity="0.2">
+              <animateTransform attributeName="transform" type="rotate" values="0 150 112;360 150 112" dur="22s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+          <span class="vl">tabela snellen</span>
+        </div>
+        <span class="spec-n">03 / 03</span>
+        <h3>Atendimento oftalmológico</h3>
+        <p>Atualize sua receita com segurança e conforto, direto com especialistas.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;margin-top:52px;" class="reveal d2">
+      <a class="btn btn-ink" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener">Agendar meu atendimento <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DOBRA 4 — DIFERENCIAIS ========= -->
+<section class="blk diff-section" id="diferencial">
+  <div class="container">
+    <div class="sec-kicker reveal">04 · Diferenciais</div>
+    <h2 class="sec-title reveal d1">Por que a Ótica Beatriz é<br>a escolha certa <em>em Prazeres?</em></h2>
+    <p class="sec-body reveal d2" style="margin-bottom:64px;">Não entregamos apenas óculos. Entregamos a melhor experiência de compra para você.</p>
+
+    <div class="diff-grid">
+      <article class="diff-card reveal">
+        <span class="dc">A.01</span>
+        <div class="card-ring"></div>
+        <div class="card-ring-inner"></div>
+        <div class="stat">1<span class="stat-unit">dia</span></div>
+        <span class="stat-label">Entrega expressa</span>
+        <h3>Pronto no mesmo dia.</h3>
+        <p>Menos espera, mais comodidade. Você chega para o exame e sai com o seu óculos novo.</p>
+      </article>
+      <article class="diff-card reveal d1">
+        <span class="dc">A.02</span>
+        <div class="card-ring"></div>
+        <div class="card-ring-inner"></div>
+        <div class="stat">100<span class="stat-unit">%</span></div>
+        <span class="stat-label">Marcas exclusivas</span>
+        <h3>Catálogo curado e durável.</h3>
+        <p>Armações modernas, de alto padrão estético e selecionadas com rigor para durar.</p>
+      </article>
+      <article class="diff-card reveal d2">
+        <span class="dc">A.03</span>
+        <div class="card-ring"></div>
+        <div class="card-ring-inner"></div>
+        <div class="stat" style="font-size:52px">Justo</div>
+        <span class="stat-label">Economia de verdade</span>
+        <h3>Preço transparente.</h3>
+        <p>Você não precisa gastar uma fortuna para ter um óculos de qualidade — e a gente prova.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DOBRA 5 — LOCAL ========= -->
+<section class="blk" id="local">
+  <div class="container">
+    <div class="sec-kicker reveal">05 · Onde estamos</div>
+    <h2 class="sec-title reveal d1">Venha tomar um café<br>e saia de <em>óculos novo.</em></h2>
+    <p class="sec-body reveal d2" style="margin-bottom:64px;">Estamos em Prazeres, prontos para oferecer um atendimento diferenciado e focado no seu estilo.</p>
+
+    <div class="local-grid">
+      <!-- Animated map -->
+      <div class="map-frame reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="500" fill="#EFECE5"/>
+          <g stroke="#DDD9D0" stroke-width="1" fill="none">
+            <path d="M 0 80 L 400 100"/>
+            <path d="M 0 180 L 400 200"/>
+            <path d="M 0 320 L 400 300"/>
+            <path d="M 0 420 L 400 400"/>
+            <path d="M 80 0 L 100 500"/>
+            <path d="M 200 0 L 220 500"/>
+            <path d="M 320 0 L 300 500"/>
+          </g>
+          <path d="M 0 250 L 400 240" stroke="#111009" stroke-width="2.5" fill="none"/>
+          <g fill="#E3DFD6" opacity="0.8">
+            <rect x="105" y="105" width="90" height="70" rx="1"/>
+            <rect x="225" y="205" width="70" height="90" rx="1"/>
+            <rect x="105" y="305" width="90" height="90" rx="1"/>
+          </g>
+          <!-- Animated radar ping -->
+          <g transform="translate(200,240)">
+            <circle r="8" fill="none" stroke="oklch(0.58 0.15 42)" stroke-width="0.8" opacity="0">
+              <animate attributeName="r" values="8;72" dur="2.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="8" fill="none" stroke="oklch(0.58 0.15 42)" stroke-width="0.8" opacity="0">
+              <animate attributeName="r" values="8;72" dur="2.8s" begin="0.9s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0" dur="2.8s" begin="0.9s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="8" fill="none" stroke="oklch(0.58 0.15 42)" stroke-width="0.8" opacity="0">
+              <animate attributeName="r" values="8;72" dur="2.8s" begin="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0" dur="2.8s" begin="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="10" fill="oklch(0.58 0.15 42)"/>
+            <circle r="4" fill="#F8F5F0"/>
+          </g>
+          <text x="16" y="24" font-family="SF Mono,monospace" font-size="9" fill="#7A7670" letter-spacing="1.2">PRAZERES · JABOATÃO-PE</text>
+          <text x="16" y="492" font-family="SF Mono,monospace" font-size="9" fill="#7A7670" letter-spacing="1.2">AV. BARRETO DE MENEZES</text>
+        </svg>
+        <div class="map-pin-label">Estamos aqui</div>
+      </div>
+
+      <div class="reveal d1">
+        <div class="addr-table">
+          <div class="addr-row"><span class="ak">Endereço</span><span class="av">Av. Barreto de Menezes, 617 — Box C</span></div>
+          <div class="addr-row"><span class="ak">Bairro</span><span class="av">Prazeres — Jaboatão dos Guararapes — PE</span></div>
+          <div class="addr-row"><span class="ak">CEP</span><span class="av">54310-310</span></div>
+          <div class="addr-row"><span class="ak">WhatsApp</span><span class="av">(81) 98557-1866</span></div>
+          <div class="addr-row"><span class="ak">Horário</span><span class="av">Seg – Sáb · 09h às 18h</span></div>
+        </div>
+        <div class="cta-group">
+          <a class="btn btn-ink" href="https://www.google.com/maps/search/?api=1&query=Avenida+Barreto+de+Menezes+617+Prazeres+Jaboat%C3%A3o" target="_blank" rel="noopener">Como chegar <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener">Avisar que estou indo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DOBRA 6 — FECHAMENTO ========= -->
+<section class="closing" id="fechamento">
+  <!-- Animated concentric circles -->
+  <div class="dark-circles" aria-hidden="true">
+    <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice">
+      <circle cx="700" cy="350" r="420" fill="none" stroke="#1C1B18" stroke-width="0.7" stroke-dasharray="6 12"
+        style="transform-origin:700px 350px; animation:spin-cw 100s linear infinite;"/>
+      <circle cx="700" cy="350" r="300" fill="none" stroke="#181714" stroke-width="0.5" stroke-dasharray="3 8"
+        style="transform-origin:700px 350px; animation:spin-ccw 70s linear infinite;"/>
+      <circle cx="700" cy="350" r="180" fill="none" stroke="#1C1B18" stroke-width="0.8"
+        style="transform-origin:700px 350px; animation:breath 8s ease-in-out infinite;--op:0.5;"/>
+      <circle r="4" fill="oklch(0.58 0.15 42)" opacity="0.6"
+        style="transform-origin:700px 350px; --r:420px; animation:orbit-dot 28s linear infinite;"/>
+      <circle r="3" fill="oklch(0.58 0.15 42)" opacity="0.35"
+        style="transform-origin:700px 350px; --r:300px; animation:orbit-dot 18s linear infinite reverse;"/>
+      <circle r="2" fill="#fff" opacity="0.12"
+        style="transform-origin:700px 350px; --r:180px; animation:orbit-dot 11s linear infinite;"/>
+    </svg>
+  </div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="sec-kicker reveal">06 · Fechamento</div>
+    <h2 class="sec-title reveal d1">Não deixe a sua saúde visual<br>para <em>depois.</em></h2>
+    <p class="sec-body reveal d2">Fale com nossa equipe agora. Vamos tirar suas dúvidas e separar as melhores opções de armação para o seu rosto.</p>
+    <div class="reveal d3" style="margin-top:0">
+      <a class="btn btn-wa" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener" style="font-size:17px;padding:20px 36px;">
+        Enviar mensagem no WhatsApp <span class="arr">→</span>
+      </a>
+    </div>
+    <div class="phone-tag reveal d4">(81) 98557-1866 · Resposta em minutos</div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-logo"><img src="uploads/Prancheta 1.png" alt="Ótica Beatriz"/></div>
+        <p>Óculos completo, exame oftalmológico e atendimento focado no seu estilo — em Prazeres.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Endereço</h4>
+        <p>Av. Barreto de Menezes, 617, Box C<br>Prazeres · Jaboatão dos Guararapes · PE<br>CEP 54310-310</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D">WhatsApp · (81) 98557-1866</a>
+        <a href="mailto:contato@oticabeatriz.com.br">contato@oticabeatriz.com.br</a>
+      </div>
+      <div class="foot-col">
+        <h4>Navegue</h4>
+        <a href="#objecao">Como funciona</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#diferencial">Diferenciais</a>
+        <a href="#local">Onde estamos</a>
+        <a href="#fechamento">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Ótica Beatriz. Todos os direitos reservados.</span>
+      <span>Jaboatão dos Guararapes — PE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ========= FAB ========= -->
+<a class="fab" href="https://wa.me/5581985571866?text=Ol%C3%A1%2C%20gostaria%20de%20iniciar%20um%20atendimento.%20%5BGoogle%5D" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <span class="fab-pulse"></span>
+  <span class="fab-label">Falar no WhatsApp</span>
+</a>
+
+<!-- ========= SCROLL REVEAL ========= -->
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Immediately reveal anything already in viewport on load
+  document.querySelectorAll('.reveal').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+  });
+</script>
+
+</body>
+</html>
