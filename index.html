@@ -145,7 +145,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap"></noscript>
 
 <style>
 /* =====================================================
@@ -506,6 +507,8 @@ section.blk {
   border-bottom: 1px solid var(--line);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 .sec-kicker {
   font-family: var(--mono);
@@ -1029,7 +1032,7 @@ footer {
 <nav class="top">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
-      <img src="uploads/Prancheta 1.png" alt="Ótica Beatriz" />
+      <img src="uploads/Prancheta 1.png" alt="Ótica Beatriz" width="120" height="48" fetchpriority="high" decoding="sync" />
     </a>
     <ul class="nav-links">
       <li><a href="#especialidades">Especialidades</a></li>
@@ -1267,7 +1270,7 @@ footer {
     <div class="spec-row">
       <div class="spec-cell reveal">
         <div class="spec-visual" style="background:#e8dfd0;">
-          <img src="uploads/Design sem nome (32).png" alt="Óculos completo pronto no mesmo dia na Ótica Beatriz em Jaboatão dos Guararapes" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
+          <img src="uploads/Design sem nome (32).png" alt="Óculos completo pronto no mesmo dia na Ótica Beatriz em Jaboatão dos Guararapes" loading="lazy" decoding="async" width="400" height="300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
         </div>
         <span class="spec-n">01 / 03</span>
         <h3>Óculos completo</h3>
@@ -1276,7 +1279,7 @@ footer {
 
       <div class="spec-cell reveal d1">
         <div class="spec-visual">
-          <img src="uploads/lentes-multifocais.png" alt="Lentes multifocais com garantia de adaptação — Ótica Beatriz, Prazeres, Jaboatão dos Guararapes" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
+          <img src="uploads/lentes-multifocais.png" alt="Lentes multifocais com garantia de adaptação — Ótica Beatriz, Prazeres, Jaboatão dos Guararapes" loading="lazy" decoding="async" width="400" height="300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;"/>
           <svg viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" style="display:none;">
             <defs>
               <pattern id="sv2" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -1490,7 +1493,7 @@ footer {
   <div class="container">
     <div class="foot-grid">
       <div class="foot-col">
-        <div class="foot-logo"><img src="uploads/Prancheta 1.png" alt="Ótica Beatriz"/></div>
+        <div class="foot-logo"><img src="uploads/Prancheta 1.png" alt="Ótica Beatriz" width="120" height="48" loading="lazy" decoding="async"/></div>
         <p>Óculos completo, exame oftalmológico e atendimento focado no seu estilo — em Prazeres.</p>
       </div>
       <div class="foot-col">
